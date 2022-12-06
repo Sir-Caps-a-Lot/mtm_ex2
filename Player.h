@@ -11,9 +11,10 @@
 class Player {
 public:
 	Player(const char* name, int max_hp = DEFAULT_MAX_HP, int power = DEFAULT_POWER);
-
+	Player(const Player& player);
 	~Player();
 	void operator=(const Player& player);
+	
 	void printInfo() const;
 	void levelUp();
 	int getLevel() const;
@@ -25,14 +26,6 @@ public:
 	bool isKnockedOut() const;
 	bool pay(int cost);
 
-	Player()
-	{
-		m_name = "";
-		m_max_hp = DEFAULT_MAX_HP;
-		m_power = DEFAULT_POWER;
-		m_current_hp = DEFAULT_MAX_HP;
-	}
-
 private:
 	const char* m_name;
 	int m_max_hp;
@@ -40,6 +33,11 @@ private:
 	int m_current_hp;
 	int m_level = 1;
 	int m_coins = 0;
+
+	int getMaxHp() const;
+	int getCurrentHp() const;
+	int getPower() const;
+	char* getName() const;
 };
 
 #endif //EX2_PLAYER_H

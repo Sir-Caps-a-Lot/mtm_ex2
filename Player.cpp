@@ -1,8 +1,7 @@
 #include "Player.h"
 #include "utilities.h"
 
-Player::Player(const char* name, int max_hp, int power)
-{
+Player::Player(const char* name, int max_hp = DEFAULT_MAX_HP, int power = DEFAULT_POWER){
 	this->m_max_hp = max_hp;
 	this->m_power = power;
 	this->m_name = name;
@@ -15,6 +14,13 @@ Player::Player(const char* name, int max_hp, int power)
 	}
 
 	this->m_current_hp = m_max_hp;
+}
+
+Player::Player(const Player& player){
+	this->m_max_hp = player.getMaxHp();
+	this->m_power = player.getPower();
+	this->m_name = player.getName();
+	this->m_current_hp = player.getCurrentHp();
 }
 
 Player::~Player() {
@@ -97,4 +103,20 @@ bool Player::pay(int cost)
 	}
 	this->m_coins -= cost;
 	return true;
+}
+
+int Player::getMaxHp() const{
+	return this->m_max_hp;
+}
+
+int Player::getCurrentHp() const{
+	return this->m_current_hp;
+}
+
+int Player::getPower() const{
+	return this->m_power;
+}
+
+char* Player::getName() const{
+	return new (player.m_name).copy();
 }
