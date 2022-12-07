@@ -1,7 +1,6 @@
 #include "Player.h"
 #include "Mtmchkin.h"
 
-//----------
 Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards)
 {
 	this->m_player = Player(playerName);

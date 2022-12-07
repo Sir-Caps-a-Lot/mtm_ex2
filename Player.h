@@ -10,8 +10,11 @@
 
 class Player {
 public:
-	Player(const char* name, int max_hp = DEFAULT_MAX_HP, int power = DEFAULT_POWER);
-	Player(const Player& player);
+	Player(const char* name);
+	Player(const char* name, int max_hp);
+	Player(const char* name, int max_hp, int power);
+	//Player(const Player& player);
+	Player();
 	~Player();
 	void operator=(const Player& player);
 	
@@ -34,10 +37,10 @@ private:
 	int m_level = 1;
 	int m_coins = 0;
 
-	int getMaxHp() const;
+	/**int getMaxHp() const;
 	int getCurrentHp() const;
 	int getPower() const;
-	char* getName() const;
+	char* getName() const;*/
 };
 
 #endif //EX2_PLAYER_H

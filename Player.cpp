@@ -1,29 +1,28 @@
 #include "Player.h"
 #include "utilities.h"
 
-Player::Player(const char* name, int max_hp = DEFAULT_MAX_HP, int power = DEFAULT_POWER){
-	this->m_max_hp = max_hp;
-	this->m_power = power;
-	this->m_name = name;
+Player::Player(const char* name) : Player{name ,DEFAULT_MAX_HP, DEFAULT_POWER}{}
 
+Player::Player(const char* name, int max_hp) : Player{name ,max_hp, DEFAULT_POWER}{}
+
+Player::Player(const char* name, int max_hp, int power): m_name(""),m_max_hp(max_hp),m_power(power),m_current_hp(m_max_hp){
 	if (this->m_max_hp <= 0) {
 		this->m_max_hp = DEFAULT_MAX_HP;
+		this->m_current_hp = m_max_hp;
 	}
 	if (this->m_power <= 0) {
 		this->m_power = DEFAULT_POWER;
 	}
-
-	this->m_current_hp = m_max_hp;
 }
 
-Player::Player(const Player& player){
-	this->m_max_hp = player.getMaxHp();
-	this->m_power = player.getPower();
-	this->m_name = player.getName();
-	this->m_current_hp = player.getCurrentHp();
+Player::Player(): m_name(""),m_max_hp(DEFAULT_MAX_HP),m_power(DEFAULT_POWER),m_current_hp(m_max_hp){
+	/*this->m_max_hp = DEFAULT_MAX_HP;
+	this->m_power = DEFAULT_POWER;
+	this->m_name = "";
+	this->m_current_hp = m_max_hp;*/
 }
 
-Player::~Player() {
+Player::~Player(){
 	delete this->m_name;
 }
 
@@ -105,6 +104,14 @@ bool Player::pay(int cost)
 	return true;
 }
 
+/**
+Player::Player(const Player& player){
+	this->m_max_hp = player.getMaxHp();
+	this->m_power = player.getPower();
+	this->m_name = player.getName();
+	this->m_current_hp = player.getCurrentHp();
+}
+
 int Player::getMaxHp() const{
 	return this->m_max_hp;
 }
@@ -118,5 +125,9 @@ int Player::getPower() const{
 }
 
 char* Player::getName() const{
-	return new (player.m_name).copy();
+	int length = (this->m_name).length();
+	char* ret = new char[length];
+	(this->m_name).copy(ret,length,0);
+	return ret;
 }
+*/
