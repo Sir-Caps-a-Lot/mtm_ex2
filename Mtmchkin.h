@@ -52,6 +52,7 @@ public:
      *          GameStatus - the current status of the running game
      */
     GameStatus getGameStatus() const;
+	~Mtmchkin() = default;
 
 private:
 	Player m_player;

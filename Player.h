@@ -15,7 +15,6 @@ public:
 	Player(const char* name, int max_hp, int power);
 	//Player(const Player& player);
 	Player();
-	~Player();
 	void operator=(const Player& player);
 	
 	void printInfo() const;
@@ -28,6 +27,7 @@ public:
 	void addCoins(int coins);
 	bool isKnockedOut() const;
 	bool pay(int cost);
+	~Player() = default;
 
 private:
 	const char* m_name;

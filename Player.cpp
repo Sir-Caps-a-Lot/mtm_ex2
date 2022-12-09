@@ -5,7 +5,7 @@ Player::Player(const char* name) : Player{name ,DEFAULT_MAX_HP, DEFAULT_POWER}{}
 
 Player::Player(const char* name, int max_hp) : Player{name ,max_hp, DEFAULT_POWER}{}
 
-Player::Player(const char* name, int max_hp, int power): m_name(""),m_max_hp(max_hp),m_power(power),m_current_hp(m_max_hp){
+Player::Player(const char* name, int max_hp, int power): m_name(name),m_max_hp(max_hp),m_power(power),m_current_hp(m_max_hp){
 	if (this->m_max_hp <= 0) {
 		this->m_max_hp = DEFAULT_MAX_HP;
 		this->m_current_hp = m_max_hp;
@@ -20,10 +20,6 @@ Player::Player(): m_name(""),m_max_hp(DEFAULT_MAX_HP),m_power(DEFAULT_POWER),m_c
 	this->m_power = DEFAULT_POWER;
 	this->m_name = "";
 	this->m_current_hp = m_max_hp;*/
-}
-
-Player::~Player(){
-	delete this->m_name;
 }
 
 void Player::operator=(const Player& player)
@@ -103,31 +99,3 @@ bool Player::pay(int cost)
 	this->m_coins -= cost;
 	return true;
 }
-
-/**
-Player::Player(const Player& player){
-	this->m_max_hp = player.getMaxHp();
-	this->m_power = player.getPower();
-	this->m_name = player.getName();
-	this->m_current_hp = player.getCurrentHp();
-}
-
-int Player::getMaxHp() const{
-	return this->m_max_hp;
-}
-
-int Player::getCurrentHp() const{
-	return this->m_current_hp;
-}
-
-int Player::getPower() const{
-	return this->m_power;
-}
-
-char* Player::getName() const{
-	int length = (this->m_name).length();
-	char* ret = new char[length];
-	(this->m_name).copy(ret,length,0);
-	return ret;
-}
-*/
