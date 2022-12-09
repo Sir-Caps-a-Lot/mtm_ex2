@@ -4,7 +4,11 @@
 Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards)
 {
 	this->m_player = Player(playerName);
-	this->m_card_deck = cardsArray;
+	this->m_card_deck = new Card[numOfCards];
+	for (int i=0; i < numOfCards; i++)
+	{
+		this->m_card_deck[i] = cardsArray[i];
+	}
 	this->m_number_of_cards = numOfCards;
 }
 
@@ -33,4 +37,9 @@ bool Mtmchkin::isOver() const
 GameStatus Mtmchkin::getGameStatus() const
 {
 	return this->m_status;
+}
+
+Mtmchkin::~Mtmchkin()
+{
+	delete[] this->m_card_deck;
 }

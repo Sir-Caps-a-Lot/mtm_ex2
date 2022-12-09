@@ -13,7 +13,6 @@ public:
 	Player(const char* name);
 	Player(const char* name, int max_hp);
 	Player(const char* name, int max_hp, int power);
-	//Player(const Player& player);
 	Player();
 	void operator=(const Player& player);
 	
@@ -36,11 +35,6 @@ private:
 	int m_current_hp;
 	int m_level = 1;
 	int m_coins = 0;
-
-	/**int getMaxHp() const;
-	int getCurrentHp() const;
-	int getPower() const;
-	char* getName() const;*/
 };
 
 #endif //EX2_PLAYER_H

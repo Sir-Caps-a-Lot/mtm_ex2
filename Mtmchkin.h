@@ -52,12 +52,12 @@ public:
      *          GameStatus - the current status of the running game
      */
     GameStatus getGameStatus() const;
-	~Mtmchkin() = default;
+	~Mtmchkin();
 
 private:
 	Player m_player;
 	int	m_number_of_cards;
-	const Card* m_card_deck;
+	Card* m_card_deck;
 	GameStatus m_status = GameStatus::MidGame;
 	int m_current_card = 0;
 };

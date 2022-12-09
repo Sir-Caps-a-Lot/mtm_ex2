@@ -55,7 +55,10 @@ int Player::getAttackStrength() const
 
 void Player::buff(int power_up)
 {
-	this->m_power += power_up;
+	if (power_up >= 0)
+	{
+		this->m_power += power_up;
+	}
 }
 
 void Player::heal(int add_hp)
@@ -80,7 +83,10 @@ void Player::damage(int damage)
 
 void Player::addCoins(int coins)
 {
-	this->m_coins += coins;
+	if (coins >= 0)
+	{
+		this->m_coins += coins;
+	}
 }
 
 bool Player::isKnockedOut() const
@@ -96,6 +102,8 @@ bool Player::pay(int cost)
 	if (cost > this->m_coins) {
 		return false;
 	}
-	this->m_coins -= cost;
+	if (cost >= 0) {
+		this->m_coins -= cost;
+	}
 	return true;
 }
